@@ -24,7 +24,8 @@ const styles = {
     ...theme.typography.tab,
     color: 'white',
     minWidth: '10px',
-    marginLeft: '25px'
+    marginLeft: '25px',
+    fontSize: '1rem'
   }
 };
 
@@ -46,8 +47,8 @@ export default function Header() {
       <ElevationScroll>
         <AppBar position="fixed" color="primary">
           <Toolbar>
-            <FlightTakeoffIcon fontSize="large" />
-            <Typography>FLIGHTS-APP</Typography>
+            <FlightTakeoffIcon fontSize="large" sx={{ marginRight: '10px' }} />
+            <Typography sx={{ fontSize: '1rem' }}>FLIGHTS-APP</Typography>
             <Tabs sx={styles.tabContainer} value={0}>
               <Tab sx={styles.tab} label="Home" />
               <Tab sx={styles.tab} label="Services" />
