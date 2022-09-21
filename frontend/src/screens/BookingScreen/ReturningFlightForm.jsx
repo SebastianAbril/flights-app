@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import Stack from '@mui/material/Stack';
 import List from '@mui/material/List';
@@ -9,11 +9,12 @@ import Avatar from '@mui/material/Avatar';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import { useSearchParams } from 'react-router-dom';
 import { getFlights } from '../../service/FlightService';
+import { BookingContext } from './BookingContext';
 
-export default function ReturningFlightForm({ onReturningFlightSelected }) {
+export default function ReturningFlightForm() {
   const [searchParams] = useSearchParams();
   const [flights, setFlights] = useState([]);
-
+  const { returningFlight, setReturningFlight } = useContext(BookingContext);
   useEffect(() => {
     const originCityId = searchParams.get('destinationCityId');
     const destinationCityId = searchParams.get('originCityId');
@@ -28,7 +29,12 @@ export default function ReturningFlightForm({ onReturningFlightSelected }) {
     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
       {flights.map((flight) => {
         return (
-          <ListItem key={flight.id} onClick={() => onReturningFlightSelected(flight)}>
+          <ListItem
+            key={flight.id}
+            onClick={() => setReturningFlight(flight)}
+            sx={{
+              bgcolor: returningFlight && flight.id === returningFlight.id ? 'primary.main' : null
+            }}>
             <ListItemAvatar>
               <Stack direction={'row'}>
                 <Avatar>
