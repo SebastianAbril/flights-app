@@ -10,7 +10,13 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export default function PassengerForm({ passenger }) {
+export default function PassengerForm({ passenger, updatePassengerData }) {
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    updatePassengerData(passenger.id, name, value);
+  };
+
   return (
     <>
       <Accordion>
@@ -25,7 +31,10 @@ export default function PassengerForm({ passenger }) {
                 <Select
                   labelId="select-document-type"
                   id="select-document-type"
-                  label="Document Type">
+                  label="Document Type"
+                  name="documentTypeId"
+                  value={passenger.documentTypeId}
+                  onChange={handleChange}>
                   <MenuItem value={1}>Cedula</MenuItem>
                   <MenuItem value={2}>Pasport</MenuItem>
                   <MenuItem value={3}>Visa</MenuItem>
@@ -40,11 +49,22 @@ export default function PassengerForm({ passenger }) {
                 label="Document"
                 fullWidth
                 variant="standard"
+                value={passenger.document}
+                onChange={handleChange}
               />
             </Grid>
 
             <Grid item xs={12} sm={6}>
-              <TextField required id="name" name="name" label="Name" fullWidth variant="standard" />
+              <TextField
+                required
+                id="name"
+                name="name"
+                label="Name"
+                fullWidth
+                variant="standard"
+                value={passenger.name}
+                onChange={handleChange}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -54,6 +74,8 @@ export default function PassengerForm({ passenger }) {
                 label="Last name"
                 fullWidth
                 variant="standard"
+                value={passenger.lastName}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={6}>
@@ -64,13 +86,32 @@ export default function PassengerForm({ passenger }) {
                 label="Phone Number"
                 fullWidth
                 variant="standard"
+                value={passenger.phoneNumber}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField required id="age" name="age" label="Age" fullWidth variant="standard" />
+              <TextField
+                required
+                id="age"
+                name="age"
+                label="Age"
+                fullWidth
+                variant="standard"
+                value={passenger.age}
+                onChange={handleChange}
+              />
             </Grid>
             <Grid item xs={12}>
-              <TextField id="email" name="email" label="Email" fullWidth variant="standard" />
+              <TextField
+                id="email"
+                name="email"
+                label="Email"
+                fullWidth
+                variant="standard"
+                value={passenger.email}
+                onChange={handleChange}
+              />
             </Grid>
           </Grid>
         </AccordionDetails>

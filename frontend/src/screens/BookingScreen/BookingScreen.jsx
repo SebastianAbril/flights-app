@@ -12,10 +12,12 @@ import DepartingFlightForm from './DepartingFlightForm';
 import ReturningFlightForm from './ReturningFlightForm';
 import PassengersForm from './PassengersForm';
 import { BookingContext } from './BookingContext';
-const steps = ['Departing flight', 'Returning flight', 'Passengers', 'Payment'];
+import BillingForm from './BillingForm';
+
+const steps = ['Departing flight', 'Returning flight', 'Passengers', 'Billing'];
 
 export default function BookingScreen() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(3);
   const [searchParams] = useSearchParams();
   const numberOfAdults = searchParams.get('adults') || 0;
   const numberOfChildrens = searchParams.get('children') || 0;
@@ -30,7 +32,7 @@ export default function BookingScreen() {
       setActiveStep(activeStep + 2);
     } else {
       setActiveStep(activeStep + 1);
-    } 
+    }
   };
   const handleBack = () => {
     if (activeStep === 2 && flightType === 'OW') {
@@ -93,7 +95,7 @@ export default function BookingScreen() {
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
                     disabled={isNextButtonDisabled}>
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Make Booking' : 'Next'}
                   </Button>
                 </Box>
               </>
@@ -108,7 +110,7 @@ export default function BookingScreen() {
 const getPassengerList = (numberOfAdults, numberOfChildrens) => {
   const passenger = [];
   const defaultState = {
-    documentType: '',
+    documentTypeId: '',
     document: '',
     name: '',
     lastName: '',
@@ -136,7 +138,7 @@ const getPassengerList = (numberOfAdults, numberOfChildrens) => {
   return passenger;
 };
 
-const getNextButtonState = (step, departedFlight, returningFlight, passengers) => {
+const getNextButtonState = (step, departedFlight, returningFlight, passengers, billing) => {
   switch (step) {
     case 0:
       return departedFlight === null;
@@ -144,6 +146,8 @@ const getNextButtonState = (step, departedFlight, returningFlight, passengers) =
       return returningFlight === null;
     case 2:
       return passengers === null;
+    case 3:
+      return billing === null;
     default:
       throw new Error('Unknown step');
   }
@@ -157,6 +161,8 @@ function getStepContent(step) {
       return <ReturningFlightForm />;
     case 2:
       return <PassengersForm />;
+    case 3:
+      return <BillingForm />;
     default:
       throw new Error('Unknown step');
   }
