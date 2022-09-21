@@ -1,0 +1,41 @@
+@startuml
+
+
+
+rectangle Backend {
+    rectangle FlightModule{
+        [FlightController]
+        [FlightService]
+        [FlightRepository]
+    }
+    rectangle BillingModule{
+        [BillingController]
+        [BillingService]
+        [BillingRepository]
+    }
+    rectangle BookingModule{
+        [BookingController]
+        [BookingService]
+        [BookingRepository]
+    }
+    
+}
+
+database PostgreSQL
+cloud FlightProvider
+
+FlightController --> FlightService
+FlightService --> FlightRepository
+FlightRepository --> FlightProvider
+
+BillingController --> BillingService
+BillingService --> BillingRepository
+BillingRepository --> PostgreSQL
+
+BookingController --> BookingService
+BookingService --> BookingRepository
+BookingRepository --> PostgreSQL
+
+
+
+@enduml

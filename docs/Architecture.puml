@@ -1,0 +1,26 @@
+@startuml
+
+rectangle Frontend {
+    [Screens]
+    [Services]
+}
+
+rectangle Backend {
+    [FlightModule]
+    [BillingModule]
+    [BookingModule]
+}
+
+database PostgreSQL
+cloud FlightProvider
+
+[Screens] --> [Services]
+[Services] --> [FlightModule]
+[Services] --> [BillingModule]
+[Services] --> [BookingModule]
+
+[FlightModule] --> FlightProvider
+[BillingModule] --> PostgreSQL
+[BookingModule] --> PostgreSQL
+
+@enduml

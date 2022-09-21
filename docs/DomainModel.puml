@@ -1,0 +1,68 @@
+@startuml
+
+class DocumentType {
+    Long id
+    String name
+}
+
+class User {
+    Long id
+    String name
+    String lastName
+    DocumentType documentType
+    String document
+    String phoneNumber
+    Integer age
+    String email
+    Double miles
+    Boolean isFrequentUser
+}
+
+class City {
+    Long id
+    String name
+}
+
+class CityDestinations {
+    Long id
+    City originCity
+    City destinationCity
+}
+
+class Flight {
+    Long id
+    String name
+    City departureCity
+    City arrivalCity 
+    String departureDate
+    String arrivalDate
+    String airline
+    Double miles
+    Boolean isDirect
+}
+
+class Booking {
+    Long id
+    String code
+    List<BookingDetails> details
+    Double totalPayment
+}
+
+class BookingDetails {
+    User passenger
+    Flight flight
+    String passengerSeat
+    Double payment
+    Double discount
+}
+
+
+User -- DocumentType: has >
+City -- CityDestinations: has >
+Booking -- BookingDetails: has >
+BookingDetails -- User: has >
+BookingDetails -- Flight: has >
+Flight - City: has >
+
+
+@enduml
