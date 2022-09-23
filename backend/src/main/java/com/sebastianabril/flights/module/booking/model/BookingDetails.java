@@ -1,11 +1,10 @@
 package com.sebastianabril.flights.module.booking.model;
 
-import com.sebastianabril.flights.module.flight.model.Flight;
-
 import javax.persistence.*;
 
 
-
+@Entity
+@Table(name="booking-details")
 public class BookingDetails {
 
     @Id

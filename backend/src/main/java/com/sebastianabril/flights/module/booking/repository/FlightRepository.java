@@ -1,6 +1,6 @@
-package com.sebastianabril.flights.module.flight.repository;
+package com.sebastianabril.flights.module.booking.repository;
 
-import com.sebastianabril.flights.module.flight.model.Flight;
+import com.sebastianabril.flights.module.booking.model.Flight;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

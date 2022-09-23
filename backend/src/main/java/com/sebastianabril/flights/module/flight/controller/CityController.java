@@ -4,6 +4,7 @@ import com.sebastianabril.flights.module.flight.model.City;
 import com.sebastianabril.flights.module.flight.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,4 +20,8 @@ public class CityController {
         return cityService.getOriginCities();
     }
 
+    @GetMapping("/api/cities/destination-cities/{cityId}")
+    public List<City> getDestinationCityByOriginCity(@PathVariable Long cityId){
+        return cityService.getDestinationCityByOriginCity(cityId);
+    }
 }

@@ -1,5 +1,7 @@
 package com.sebastianabril.flights.module.flight.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,8 +11,11 @@ public class City {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    @OneToMany
+
+    @JsonIgnore
+    @ManyToMany
     private List<City> destinationCities;
 
     public Long getId() {

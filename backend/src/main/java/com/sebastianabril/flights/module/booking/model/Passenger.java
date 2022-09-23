@@ -17,7 +17,6 @@ public class Passenger {
     private Integer age;
     private String email;
     private Double miles;
-    private Boolean isFrequentUser;
 
     public Long getId() {
         return id;
@@ -89,13 +88,5 @@ public class Passenger {
 
     public void setMiles(Double miles) {
         this.miles = miles;
-    }
-
-    public Boolean getFrequentUser() {
-        return isFrequentUser;
-    }
-
-    public void setFrequentUser(Boolean frequentUser) {
-        isFrequentUser = frequentUser;
     }
 }

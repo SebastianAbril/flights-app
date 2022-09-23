@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 
-
+@Entity
+@Table(name="booking")
 public class Booking {
 
     @Id

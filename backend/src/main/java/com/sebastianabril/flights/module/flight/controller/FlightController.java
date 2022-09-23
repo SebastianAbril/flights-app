@@ -1,40 +1,26 @@
 package com.sebastianabril.flights.module.flight.controller;
 
-import com.sebastianabril.flights.module.flight.model.City;
-import com.sebastianabril.flights.module.flight.model.Flight;
-import com.sebastianabril.flights.module.flight.service.FlightService;
+import com.sebastianabril.flights.module.flight.model.FlightDTO;
+import com.sebastianabril.flights.module.flight.service.FlightProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
 public class FlightController {
 
     @Autowired
-    private FlightService flightService;
+    private FlightProviderService flightService;
 
-    @PostMapping("/flight")
-    public void createFlight(@RequestBody Flight flight){
-        String name = flight.getName();
-        City departureCity = flight.getDepartureCity();
-        City arrivalCity = flight.getArrivalCity();
-        String departureDate = flight.getDepartureDate();
-        String arrivalDate = flight.getArrivalDate();
-        String airline = flight.getAirline();
-        Double miles = flight.getMiles();
-        Boolean isDirect = flight.getDirect();
-
-        flightService.createFlight(name, departureCity, arrivalCity, departureDate , arrivalDate, airline, miles, isDirect );
-    }
-    @GetMapping("/flight")
-    public List<Flight> getFlights(){
-        return flightService.getFlights();
-    }
-
-    @GetMapping("/flight/{id}")
-    public Flight getFlightById(@PathVariable Long id){
-        return flightService.getFlightById(id);
+    @GetMapping("/api/flights")
+    public List<FlightDTO> getFlights(
+            @RequestParam Long originCityId,
+            @RequestParam Long destinationCityId,
+            @RequestParam("date") @DateTimeFormat(pattern = "dd/MM/yyyy") Date date){
+        return flightService.getFlights(originCityId, destinationCityId, date);
     }
 
 }
