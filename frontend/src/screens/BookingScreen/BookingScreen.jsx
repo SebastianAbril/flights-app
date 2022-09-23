@@ -17,7 +17,7 @@ import BillingForm from './BillingForm';
 const steps = ['Departing flight', 'Returning flight', 'Passengers', 'Billing'];
 
 export default function BookingScreen() {
-  const [activeStep, setActiveStep] = useState(3);
+  const [activeStep, setActiveStep] = useState(0);
   const [searchParams] = useSearchParams();
   const numberOfAdults = searchParams.get('adults') || 0;
   const numberOfChildrens = searchParams.get('children') || 0;
@@ -123,7 +123,7 @@ const getPassengerList = (numberOfAdults, numberOfChildrens) => {
     passenger.push({
       ...defaultState,
       isAdult: true,
-      id: i
+      id: `ADULT-${i}`
     });
   }
 
@@ -131,7 +131,7 @@ const getPassengerList = (numberOfAdults, numberOfChildrens) => {
     passenger.push({
       ...defaultState,
       isAdult: false,
-      id: i
+      id: `CHILDREN-${i}`
     });
   }
 

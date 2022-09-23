@@ -1,7 +1,7 @@
-package com.sebastianabril.flights.module.flight.service;
+package com.sebastianabril.flights.module.shared.service;
 
-import com.sebastianabril.flights.module.flight.model.City;
-import com.sebastianabril.flights.module.flight.repository.CityRepository;
+import com.sebastianabril.flights.module.shared.model.City;
+import com.sebastianabril.flights.module.shared.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

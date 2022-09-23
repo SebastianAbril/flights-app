@@ -1,6 +1,6 @@
-package com.sebastianabril.flights.module.booking.repository;
+package com.sebastianabril.flights.module.shared.repository;
 
-import com.sebastianabril.flights.module.booking.model.DocumentType;
+import com.sebastianabril.flights.module.shared.model.DocumentType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DocumentTypeRepository  extends JpaRepository<DocumentType, Long> {

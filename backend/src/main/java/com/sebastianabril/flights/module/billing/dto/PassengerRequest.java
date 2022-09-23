@@ -1,9 +1,11 @@
 package com.sebastianabril.flights.module.billing.dto;
 
-public class PassengerDTO {
-    Long documentTypeId;
-    String document;
-    Integer age;
+public class PassengerRequest {
+    private Long documentTypeId;
+    private String document;
+    private Integer age;
+    private String name;
+    private String lastName;
 
     public Long getDocumentTypeId() {
         return documentTypeId;
@@ -27,5 +29,21 @@ public class PassengerDTO {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

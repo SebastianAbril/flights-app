@@ -108,6 +108,5 @@ public class LocalFlightProvider implements FlightProviderRepository {
     }
     public Optional<FlightDTO> findById(Long flightId){
         return data.stream().filter(flight -> flight.getId() == flightId).findFirst();
-
     }
 }

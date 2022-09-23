@@ -1,6 +1,6 @@
 package com.sebastianabril.flights.module.booking.service;
 
-import com.sebastianabril.flights.module.booking.model.DocumentType;
+import com.sebastianabril.flights.module.shared.model.DocumentType;
 import com.sebastianabril.flights.module.booking.model.Passenger;
 import com.sebastianabril.flights.module.booking.repository.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

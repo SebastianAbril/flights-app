@@ -10,7 +10,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export default function PassengerForm({ passenger, updatePassengerData }) {
+export default function PassengerForm({ passenger, updatePassengerData, documentTypes }) {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -35,9 +35,11 @@ export default function PassengerForm({ passenger, updatePassengerData }) {
                   name="documentTypeId"
                   value={passenger.documentTypeId}
                   onChange={handleChange}>
-                  <MenuItem value={1}>Cedula</MenuItem>
-                  <MenuItem value={2}>Pasport</MenuItem>
-                  <MenuItem value={3}>Visa</MenuItem>
+                  {documentTypes.map((documentType) => (
+                    <MenuItem key={documentType.id} value={documentType.id}>
+                      {documentType.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid>

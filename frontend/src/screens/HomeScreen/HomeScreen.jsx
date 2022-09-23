@@ -14,7 +14,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate, createSearchParams } from 'react-router-dom';
-import { getOriginCities, getDestinationCitiesByOriginCityId } from '../../service/FlightService';
+import { getOriginCities, getDestinationCitiesByOriginCityId } from '../../service/SharedServices';
 
 export default function HomeScreen() {
   const navigate = useNavigate();
@@ -129,7 +129,7 @@ export default function HomeScreen() {
           <FormControl fullWidth>
             <DesktopDatePicker
               label="Departure Date"
-              inputFormat="MM/DD/YYYY"
+              inputFormat="DD/MM/YYYY"
               value={formData.departureDate}
               onChange={(value) => setFormData({ ...formData, departureDate: value })}
               renderInput={(params) => <TextField {...params} />}
@@ -138,7 +138,7 @@ export default function HomeScreen() {
           <FormControl fullWidth>
             <DesktopDatePicker
               label="Return Date"
-              inputFormat="MM/DD/YYYY"
+              inputFormat="DD/MM/YYYY"
               value={formData.returnDate}
               onChange={(value) => setFormData({ ...formData, returnDate: value })}
               disabled={formData.flightType === 'OW'}

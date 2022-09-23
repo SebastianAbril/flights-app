@@ -1,6 +1,6 @@
 package com.sebastianabril.flights.module.booking.model;
 
-import com.sebastianabril.flights.module.flight.model.City;
+import com.sebastianabril.flights.module.shared.model.City;
 
 import javax.persistence.*;
 

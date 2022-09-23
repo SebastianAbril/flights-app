@@ -1,4 +1,4 @@
-package com.sebastianabril.flights.module.flight.model;
+package com.sebastianabril.flights.module.shared.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -1,14 +1,16 @@
-//import { useEffect, useState } from 'react';
-import { useContext } from 'react';
-//import Stack from '@mui/material/Stack';
-//import Paper from '@mui/material/Paper';
+import { useContext, useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import { BookingContext } from './BookingContext';
-//import { getFlights } from '../../service/FlightService';
 import PassengerForm from '../../components/PassengerForm';
+import { getDocumentTypes } from '../../service/SharedServices';
 
 export default function PassengersForm() {
   const { passengers, setPassengers } = useContext(BookingContext);
+  const [documentTypes, setDocumentTypes] = useState([]);
+
+  useEffect(() => {
+    getDocumentTypes().then((documentTypes) => setDocumentTypes(documentTypes));
+  }, []);
 
   const updatePassengerData = (id, name, value) => {
     setPassengers((passengers) => {
@@ -26,12 +28,13 @@ export default function PassengersForm() {
     <Container>
       <h1>Adults</h1>
       {passengers
-        .filter((passenger) => passenger.isAdult)
+        .filter((passenger) => passenger.isAdult === true)
         .map((passenger) => (
           <PassengerForm
             key={passenger.id}
             passenger={passenger}
             updatePassengerData={updatePassengerData}
+            documentTypes={documentTypes}
           />
         ))}
 
@@ -43,6 +46,7 @@ export default function PassengersForm() {
             key={passenger.id}
             passenger={passenger}
             updatePassengerData={updatePassengerData}
+            documentTypes={documentTypes}
           />
         ))}
     </Container>

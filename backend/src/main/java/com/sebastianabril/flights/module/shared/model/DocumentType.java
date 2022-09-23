@@ -1,4 +1,4 @@
-package com.sebastianabril.flights.module.booking.model;
+package com.sebastianabril.flights.module.shared.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

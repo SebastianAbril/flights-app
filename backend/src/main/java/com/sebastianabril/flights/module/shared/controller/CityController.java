@@ -1,7 +1,7 @@
-package com.sebastianabril.flights.module.flight.controller;
+package com.sebastianabril.flights.module.shared.controller;
 
-import com.sebastianabril.flights.module.flight.model.City;
-import com.sebastianabril.flights.module.flight.service.CityService;
+import com.sebastianabril.flights.module.shared.model.City;
+import com.sebastianabril.flights.module.shared.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

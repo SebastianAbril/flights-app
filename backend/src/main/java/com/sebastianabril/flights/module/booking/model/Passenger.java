@@ -1,5 +1,7 @@
 package com.sebastianabril.flights.module.booking.model;
 
+import com.sebastianabril.flights.module.shared.model.DocumentType;
+
 import javax.persistence.*;
 
 @Entity
