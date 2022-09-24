@@ -15,6 +15,10 @@ node {
 	npmWorkDir = file("${project.buildDir}/npm")
 }
 
+tasks.named("jar") {
+	enabled = false
+}
+
 task appNpmInstall(type: NpmTask) {
   description = "Installs all dependencies from package.json"
   workingDir = file("${project.projectDir}/src/main/webapp")
