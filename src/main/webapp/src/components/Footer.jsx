@@ -11,7 +11,9 @@ export const Footer = () => {
         px: 2,
         mt: 'auto',
         backgroundColor: 'primary.main',
-        width: '100%'
+        width: '100%',
+        position: 'fixed',
+        bottom: '0px'
       }}>
       <Container maxWidth="md">
         <Typography align="center" variant="body1" color="white">
