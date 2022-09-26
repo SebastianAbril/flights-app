@@ -1,32 +1,54 @@
 # Flights-app
-Este sencillo y asombroso projecto permite comprar tiquetes aereos a través de una interfaz con 4 pasos: ciudad origen, ciudad destino, información de  pasajeros y facturación. Flights-app usa React como framework en el Frontend junto con MaterialUI, para el backend utiliza Java con Springboot; JPA e Hibernate y PostreSQL como base de datos.
+Este sencillo y asombroso projecto permite comprar tiquetes aereos a través de una interfaz con 4 pasos: ciudad origen, ciudad destino, información de  pasajeros y facturación. Flights-app usa React como framework en el Frontend junto con MaterialUI, para el backend utiliza Java con Springboot; JPA e Hibernate y PostreSQL como base de datos. Deploy utilizando Docker en Heroku.
 
 https://flights-app-sebas.herokuapp.com/
 
 ## Arquitectura
-Flights-app posee una arquitectura de capas que está dividida en dos: Frontend y Backend.
+posee un arquitectura dividia en dos componentes: Frontend y Backend.
 
 ![arquitecture](./docs/diagrams/Architecture.png)
 
 ### Frontend
 El Frontend se construyo con una arquitectura de dos capas: Pantallas y Servicio.
-    - Pantallas:
-        - BookingScreen:
-        - HomeScreen:
-    - Servicios:
-        - BillingService:
-        - FlightService:
-        - SharedServices:
+
+#### Pantallas:
+
+    - HomeScreen: pantalla inicial donde se escoge el tipo de vuelo (RT/OW), origen, destino, fechas y pasajeros.
+    ![HomeScreen](./docs/diagrams/HomeScreen.png)
+
+    - BookingScreen: pantalla donde se encuentra el wizard que recopila la información de vuelos disponibles seleccionados, pasajeros y facturación.
+
+    ![BookingScreen](./docs/diagrams/BookingScreen.png)
+        
+#### Servicios 
+contiene las funciones que nos permiten comunicar el Frontend con el Backend.
+    - BillingService.
+    - FlightService.
+    - SharedServices.
+
+#### Rutas
+Las rutas establecidas con React Router son:
+- "/": pantalla de inicio (HomeScreen).
+- "/booking": Pantalla para completar la información del vuelo(BookinScreen).
+
         
 ### Backend
-
+El Backend  es monolito y fue realizado con Springboot, contiene 3 módulos: billing, booking y flight. Cada módulo con una arquitectura de 3 capas: controlador, servicio y repositorio. Se uso JPA con SpringData para la capa de repositorio y PostreSQL como base de datos.
 
 ![backend](./docs/diagrams/Backend.png)
 
 #### DomainModel
+Los modelos con sus correspondientes clases son los siguientes:
 
 ![DomainModel](./docs/diagrams//DomainModel.png)
 
+- Booking:
+- BookingDetails:
+- Passenger:
+- DocumentType;
+- Flight:
+- City:
+- CityDestinations:
 ## Características
 - [x] El usuario ingresa a la página de nuestra aerolínea y selecciona cual es la ciudad de origen, y la ciudad de destino.
 - [x] La ciudad de destino se debe cargar según el origen seleccionado, ya que de un origen no se vuela a todos los destinos.
@@ -43,5 +65,10 @@ El Frontend se construyo con una arquitectura de dos capas: Pantallas y Servicio
 - [x] Si el viajero ha viajado más de 10 veces en el mismo año hacerle un descuento del 10% en el valor de su tiquete si es un viajero frecuente, en caso de no serlo solo se hará un descuento del 5%.
 - [x] Por políticas de la empresa si existe un viajero mayor de 65 años se le hará un descuento en su tiquete del 3% adicional independiente si es o no viajero frecuente.
 - [ ] Todo niño mayor de 2 años debe ocupar una silla, por lo cuál se le debe generar tiquete a la tarifa normal, si es menor de 2 años se cobra solo el 10% de la tarifa normal.
-- [] Paso seguido el usuario da clic en pagar y se deben generar los tiquetes, los cuales van a ser enviados por correo electrónico y en formato PDF a cada uno de los viajeros. Este correo se debe enviar de manera asíncrona ya que al usuario se le debe dar respuesta de inmediato que su reserva quedó realizada y se debe mostrar el número de la reserva.
+- [ ] Paso seguido el usuario da clic en pagar y se deben generar los tiquetes, los cuales van a ser enviados por correo electrónico y en formato PDF a cada uno de los viajeros. Este correo se debe enviar de manera asíncrona ya que al usuario se le debe dar respuesta de inmediato que su reserva quedó realizada y se debe mostrar el número de la reserva.
 
+## CI / Deploy
+
+### Docker
+    
+### Deploy a Heroku

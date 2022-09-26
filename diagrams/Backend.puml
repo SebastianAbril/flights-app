@@ -3,11 +3,6 @@
 
 
 rectangle Backend {
-     rectangle SharedModule{
-        [SharedController]
-        [SharedService]
-        [SharedRepository]
-    }
     rectangle FlightModule{
         [FlightController]
         [FlightService]
@@ -42,9 +37,7 @@ BookingController --> BookingService
 BookingService --> BookingRepository
 BookingRepository --> PostgreSQL
 
-SharedController --> SharedService
-SharedService --> SharedRepository
-SharedRepository --> PostgreSQL
+
     
 
 

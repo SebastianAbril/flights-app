@@ -9,7 +9,7 @@ rectangle Backend {
     [FlightModule]
     [BillingModule]
     [BookingModule]
-    [SharedModule]
+   
 }
 
 database PostgreSQL
@@ -19,11 +19,11 @@ cloud FlightProvider
 [Services] --> [FlightModule]
 [Services] --> [BillingModule]
 [Services] --> [BookingModule]
-[Services] --> [SharedModule]
+
 
 [FlightModule] --> FlightProvider
 [BillingModule] --> PostgreSQL
 [BookingModule] --> PostgreSQL
-[SharedModule] --> PostgreSQL
+
 
 @enduml
