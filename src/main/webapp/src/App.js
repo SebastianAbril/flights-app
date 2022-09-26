@@ -3,6 +3,7 @@ import BookingScreen from './screens/BookingScreen/BookingScreen';
 
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import { Footer } from './components/Footer';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<HomeScreen />} />
             <Route path="/booking" element={<BookingScreen />} />
           </Routes>
+          <Footer />
         </LocalizationProvider>
       </ThemeProvider>
     </div>
