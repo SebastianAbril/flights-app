@@ -41,13 +41,6 @@ Los modelos con sus correspondientes clases son los siguientes:
 
 ![DomainModel](./docs/diagrams//DomainModel.png)
 
-- Booking:
-- BookingDetails:
-- Passenger:
-- DocumentType;
-- Flight:
-- City:
-- CityDestinations:
 ## Características
 - [x] El usuario ingresa a la página de nuestra aerolínea y selecciona cual es la ciudad de origen, y la ciudad de destino.
 - [x] La ciudad de destino se debe cargar según el origen seleccionado, ya que de un origen no se vuela a todos los destinos.
