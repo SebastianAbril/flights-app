@@ -45,4 +45,3 @@ El Frontend se construyo con una arquitectura de dos capas: Pantallas y Servicio
 - [ ] Todo niño mayor de 2 años debe ocupar una silla, por lo cuál se le debe generar tiquete a la tarifa normal, si es menor de 2 años se cobra solo el 10% de la tarifa normal.
 - [] Paso seguido el usuario da clic en pagar y se deben generar los tiquetes, los cuales van a ser enviados por correo electrónico y en formato PDF a cada uno de los viajeros. Este correo se debe enviar de manera asíncrona ya que al usuario se le debe dar respuesta de inmediato que su reserva quedó realizada y se debe mostrar el número de la reserva.
 
-STILL IN PROCESS
