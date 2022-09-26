@@ -21,6 +21,7 @@ COPY backend/gradlew .
 COPY backend/gradlew.bat .
 COPY backend/settings.gradle .
 COPY --from=builderFront ./app/build/ src/main/resources/static/
+RUN chmod +x gradlew
 RUN ./gradlew build
 
 #Server Stage
