@@ -2,43 +2,15 @@ plugins {
 	id 'org.springframework.boot' version '2.7.4'
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
-	id "com.github.node-gradle.node" version "3.4.0"
 }
 
 group = 'com.sebastianabril'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
-node {
-	download = true
-	workDir = file("${project.buildDir}/nodejs")
-	npmWorkDir = file("${project.buildDir}/npm")
-}
-
 tasks.named("jar") {
 	enabled = false
 }
-
-task appNpmInstall(type: NpmTask) {
-  description = "Installs all dependencies from package.json"
-  workingDir = file("${project.projectDir}/src/main/webapp")
-  args = ["install"]
-}
-
-task appNpmBuild(type: NpmTask) {
-  description = "Builds production version of the webapp"
-  workingDir = file("${project.projectDir}/src/main/webapp")
-  args = ["run", "build"]
-}
-
-task copyWebApp(type: Copy) {
-  from 'src/main/webapp/build'
-  into 'build/resources/main/static/.'
-}
-
-appNpmBuild.dependsOn appNpmInstall
-copyWebApp.dependsOn appNpmBuild
-compileJava.dependsOn copyWebApp
 
 repositories {
 	mavenCentral()
