@@ -13,6 +13,7 @@ import Select from '@mui/material/Select';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import { useNavigate, createSearchParams } from 'react-router-dom';
 import { getOriginCities, getDestinationCitiesByOriginCityId } from '../../service/SharedServices';
 
@@ -174,6 +175,7 @@ export default function HomeScreen() {
               name="children"
               value={formData.children}
               onChange={handleChange}>
+              <MenuItem value={0}>Zero</MenuItem>
               <MenuItem value={1}>One</MenuItem>
               <MenuItem value={2}>Two</MenuItem>
               <MenuItem value={3}>Three</MenuItem>
@@ -187,6 +189,8 @@ export default function HomeScreen() {
           Find Flight
         </Button>
       </Paper>
+
+      <Box> IMPORTANT: Select only 23/09/2022 dates on Departure Date/ Return Date </Box>
     </Container>
   );
 }
