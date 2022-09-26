@@ -13,25 +13,24 @@ El Frontend se construyo con una arquitectura de dos capas: Pantallas y Servicio
 
 #### Pantallas:
 
-    - HomeScreen: pantalla inicial donde se escoge el tipo de vuelo (RT/OW), origen, destino, fechas y pasajeros.
-    ![HomeScreen](./docs/diagrams/HomeScreen.png)
+- HomeScreen: pantalla inicial donde se escoge el tipo de vuelo (RT/OW), origen, destino, fechas y pasajeros.
+![HomeScreen](./docs/diagrams/HomeScreen.png)
 
-    - BookingScreen: pantalla donde se encuentra el wizard que recopila la información de vuelos disponibles seleccionados, pasajeros y facturación.
+- BookingScreen: pantalla donde se encuentra el wizard que recopila la información de vuelos disponibles seleccionados, pasajeros y facturación.
 
-    ![BookingScreen](./docs/diagrams/BookingScreen.png)
+![BookingScreen](./docs/diagrams/BookingScreen.png)
         
 #### Servicios 
-contiene las funciones que nos permiten comunicar el Frontend con el Backend.
-    - BillingService.
-    - FlightService.
-    - SharedServices.
+Contiene las funciones que nos permiten comunicar el Frontend con el Backend.
+- BillingService.
+- FlightService.
+- SharedServices.
 
 #### Rutas
 Las rutas establecidas con React Router son:
 - "/": pantalla de inicio (HomeScreen).
 - "/booking": Pantalla para completar la información del vuelo(BookinScreen).
-
-        
+    
 ### Backend
 El Backend  es monolito y fue realizado con Springboot, contiene 3 módulos: billing, booking y flight. Cada módulo con una arquitectura de 3 capas: controlador, servicio y repositorio. Se uso JPA con SpringData para la capa de repositorio y PostreSQL como base de datos.
 
@@ -67,8 +66,15 @@ Los modelos con sus correspondientes clases son los siguientes:
 - [ ] Todo niño mayor de 2 años debe ocupar una silla, por lo cuál se le debe generar tiquete a la tarifa normal, si es menor de 2 años se cobra solo el 10% de la tarifa normal.
 - [ ] Paso seguido el usuario da clic en pagar y se deben generar los tiquetes, los cuales van a ser enviados por correo electrónico y en formato PDF a cada uno de los viajeros. Este correo se debe enviar de manera asíncrona ya que al usuario se le debe dar respuesta de inmediato que su reserva quedó realizada y se debe mostrar el número de la reserva.
 
-## CI / Deploy
+## Continuous Integration / Continuous Deployment (CI/CD)
+A través de GitHub Actions se crea una imagen de Docker que contiene la aplicación que une al Front y el Backend. La imagen se publica automatiacmente en un Registry privado en Heroku, el cual utiliza la imagen para realizar el deployment. Se crearon variables de entorno para especificar la base de datos, el host,name, username,  password y el puerto:
 
-### Docker
-    
-### Deploy a Heroku
+
+- ENV PORT 
+- ENV DATABASE_HOST 
+- ENV DATABASE_PORT 
+- ENV DATABASE_NAME 
+- ENV DATABASE_USERNAME 
+- ENV DATABASE_PASSWORD 
+
+
