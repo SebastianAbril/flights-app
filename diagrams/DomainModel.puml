@@ -5,7 +5,7 @@ class DocumentType {
     String name
 }
 
-class User {
+class Passenger {
     Long id
     String name
     String lastName
@@ -15,12 +15,12 @@ class User {
     Integer age
     String email
     Double miles
-    Boolean isFrequentUser
 }
 
 class City {
     Long id
     String name
+    List<City> destinationCities
 }
 
 class CityDestinations {
@@ -45,24 +45,31 @@ class Booking {
     Long id
     String code
     List<BookingDetails> details
-    Double totalPayment
+    Double subtotal
+    Double totalDiscount
+    Double total
 }
 
 class BookingDetails {
-    User passenger
+    Passenger passenger
     Flight flight
     String passengerSeat
-    Double payment
     Double discount
+    Double subtotal
+    Double totalDiscount
+    Double total
+    
 }
 
-
-User -- DocumentType: has >
+Passenger -- DocumentType: has >
 City -- CityDestinations: has >
 Booking -- BookingDetails: has >
-BookingDetails -- User: has >
+BookingDetails -- Passenger: has >
 BookingDetails -- Flight: has >
-Flight - City: has >
+Flight -- City: has >
+
+
+
 
 
 @enduml
